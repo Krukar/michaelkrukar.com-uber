@@ -1,0 +1,21 @@
+{
+  "name": "uber",
+  "version": "0.0.1",
+  "description": "Uber data visualization for MichaelKrukar.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krukar/michaelkrukar.com-uber.git"
+  },
+  "author": "Michael Krukar (http://michaelkrukar.com",
+  "license": "CC-BY-NC-4.0",
+  "homepage": "https://github.com/Krukar/michaelkrukar.com-uber#readme",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0"
+  },
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "snapsvg": "^0.4.0"
+  }
+}
