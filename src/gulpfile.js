@@ -1,10 +1,9 @@
 var gulp = require('gulp'),
 sass = require('gulp-sass'),
 concat = require('gulp-concat'),
-uglify = require('gulp-uglify'),
-rename = require('gulp-rename');
+uglify = require('gulp-uglify');
 
-gulp.task('sass', function () {
+gulp.task('css', function () {
 	return gulp.src('./scss/style.scss')
 	.pipe(sass({
 		outputStyle: 'compressed'
@@ -13,29 +12,22 @@ gulp.task('sass', function () {
 	.pipe(gulp.dest('../'));
 });
 
-gulp.task('concat', function() {
+gulp.task('js', function() {
 	return gulp.src(['node_modules/jquery/dist/jquery.min.js',
 		'node_modules/snapsvg/dist/snap.svg-min.js',
-		'js/app.js'])
-	.pipe(concat('uber.js'))
-	.pipe(gulp.dest('js'));
-});
-
-gulp.task('uglify', ['concat'], function() {
-	return gulp.src('js/uber.js')
-	.pipe(uglify({
-		compress:{
-			drop_console: true
-		}
-	}))
-	.pipe(rename({
-		extname: '.min.js'
-	}))
+		'node_modules/angular/angular.min.js',
+		'js/app.js',
+		'js/ngMap/ngMap.js',])
+	.pipe(concat('scripts.js'))
+	// .pipe(uglify({
+	// 	compress:{
+	// 		drop_console: true
+	// 	}
+	// }))
 	.pipe(gulp.dest('../'));
 });
 
-gulp.task('default', ['sass', 'concat', 'uglify'], function() {
-	gulp.watch('js/**/*.js', ['concat']);
-	gulp.watch('js/tv.js', ['uglify']);
+gulp.task('default', ['css', 'js'], function() {
+	gulp.watch('js/**/*.js', ['js']);
 	gulp.watch(['scss/**/*.scss', 'js/**/*.scss'], ['sass']);
 });
