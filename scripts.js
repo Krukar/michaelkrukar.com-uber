@@ -356,14 +356,17 @@ PATTERNS:[{gSize:3,lgSize:3,maxFrac:3,minFrac:0,minInt:1,negPre:"-",negSuf:"",po
 	function ngMap(ngMapFactory){
 		var directive = {
 			restrict: 'A',
-			link: linkFunc,
+			link: linkFunc, 
 			controller: ctrlFunc
 		};
 
 		function linkFunc(scope, element, attrs){
 			ngMapFactory.getData().then(function(data){
-				angular.forEach(data, function(value, key){
-					ngMapFactory.animateTrip(value.path);
+				// Test a single trip
+				//ngMapFactory.animateTrip(data[4].path);
+				angular.forEach(data, function(value, key) {
+  					ngMapFactory.animateTrip(value.path);
+  					console.log(value)
 				});
 			});
 		}
@@ -377,7 +380,7 @@ PATTERNS:[{gSize:3,lgSize:3,maxFrac:3,minFrac:0,minInt:1,negPre:"-",negSuf:"",po
 	ngMapFactory.$inject = ['$http'];
 	function ngMapFactory($http){
 		var map = Snap('#uber');
-		var carSize = 10;
+		var carSize = 20;
 
 		var service = {
 			getData: getData,
@@ -395,38 +398,29 @@ PATTERNS:[{gSize:3,lgSize:3,maxFrac:3,minFrac:0,minInt:1,negPre:"-",negSuf:"",po
 		}
 
 		function animateIn(car){
-			car.animate({r: carSize}, 250, mina.easeInOutSine);
 		}
 
 		function animateOut(car){
-			car.animate({r: 0}, 250, mina.easeInOutSine);	
 		}
 
 		function animateTrip(path){
 			var car = map.circle(carSize, carSize, 0).attr({
-				fill: '#4D868E',
-				stroke: 'none'
+				fill: 'blue',
+				stroke: 'none',
+				r: '20'
 			});
 
-			var out = false;
-
 			var pathLength = Snap.path.getTotalLength(path);
-			var outPerc = Math.round(pathLength * 0.9);
+			var outPerc = Math.round(pathLength * 0.95);
 			var speed = pathLength * 5;
 
-			animateIn(car);
+			// animateIn(car);
 			Snap.animate(0, pathLength, function(step) {
-				if(step >= outPerc && out == false){
-					animateOut(car);
-					out = true;
-				}
 				var moveToPoint = Snap.path.getPointAtLength( path, step );
 				var x = moveToPoint.x - carSize;
-				var y= moveToPoint.y - carSize;
+				var y = moveToPoint.y - carSize;
 				car.transform('translate(' + x + ',' + y + ')');
 			}, speed, mina.easeInOutSine, function(){
-				animateOut(car);
-				animateTrip(path);
 			});		
 
 		}

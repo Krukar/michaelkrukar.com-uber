@@ -1,14 +1,10 @@
 .street{
 	fill: none;
-	stroke: rgba($blue, 0.25);
-	stroke-width: 0.125rem;
-	stroke-linecap: round;
-	&:hover{
-		stroke: rgba($blue, 1);
-	}
-}
+	stroke: black;
+}  
 
 .trip{
 	fill: none;
-	stroke: none;
+	stroke: red;
+	stroke-width: 10px;
 }

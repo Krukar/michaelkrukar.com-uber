@@ -1,1 +1,1 @@
-body{margin:0;padding:0;background:#1D1F29}.street{fill:none;stroke:rgba(77,134,142,0.25);stroke-width:0.125rem;stroke-linecap:round}.street:hover{stroke:#4d868e}.trip{fill:none;stroke:none}
+body{margin:0;padding:0}.street{fill:none;stroke:black}.trip{fill:none;stroke:red;stroke-width:10px}
