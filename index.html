@@ -15,6 +15,7 @@
     <main data-ng-map>
         <svg id="uber" x="0px" y="0px" viewBox="0 0 6000 2000">
             <g class="trips">
+                <path class="trip 2015_05_06" d="M1725,800h-150v100h-575v650"/>
                 <!-- <path class="trip 2015_05_31" d="M4400,975v125h-1500c-200,0,-300,-400,-600,-400v-50c-200,0,-300,150,-400,150h-175"/> -->
                 <!-- <path class="trip 2015_05_30" d="M1725,800h175c100,0,200-150,400-150v50c300,0,400,400,600,400h1375v-75c75,0,75,-50,125-50"/> -->
                 <!-- <path class="trip 2015_05_10" d="M3675,200h175v900h-950c-200,0,-300,-400,-600,-400v-50c-200,0,-300,150,-400,150h-175"/> -->
@@ -64,6 +65,14 @@
             </g>
         </svg>
     </main>
+
+    <aside data-ng-data>
+        <p>total cost: ${{total_cost}} CAD</p>
+        <p>total distance: {{total_distance}}km</p>
+        <p>total time: {{total_time}} hours</p>
+        <p>average cost of 1 km: ${{average_cost_km}} CAD</p>
+        <p>average cost of 1 minute: ${{average_cost_minute}} CAD</p>
+    </aside>
 
     <script src="scripts.js"></script>
 </body>
