@@ -1,10 +1,15 @@
 .street{
 	fill: none;
-	stroke: black;
+	stroke: $lime;
 }  
 
 .trip{
 	fill: none;
-	stroke: red;
-	stroke-width: 10px;
+	stroke: rgba($blue, 0.1);
+	stroke-width: 20px;
+}
+
+.car{
+	fill: $red;
+	stroke: none;
 }

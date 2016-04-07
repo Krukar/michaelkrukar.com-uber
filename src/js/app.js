@@ -3,8 +3,8 @@
 	'use strict';
 	$ = jQuery;
 
-    angular.module('uberApp', []);
+	angular.module('uberApp', []);
 
-    console.log('app.js init');
+	console.log('app.js init');
 
 })();  

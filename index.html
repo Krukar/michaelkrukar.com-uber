@@ -13,68 +13,63 @@
 <body data-ng-app="uberApp">
 
     <main data-ng-map>
-        <svg id="uber" x="0px" y="0px" viewBox="0 0 6000 2000">
+        <svg id="ngMap" x="0px" y="0px" viewBox="0 0 6000 2000">
             <g class="trips">
-                <path class="trip 2015_05_06" d="M1725,800h-150v100h-575v650"/>
-                <!-- <path class="trip 2015_05_31" d="M4400,975v125h-1500c-200,0,-300,-400,-600,-400v-50c-200,0,-300,150,-400,150h-175"/> -->
-                <!-- <path class="trip 2015_05_30" d="M1725,800h175c100,0,200-150,400-150v50c300,0,400,400,600,400h1375v-75c75,0,75,-50,125-50"/> -->
-                <!-- <path class="trip 2015_05_10" d="M3675,200h175v900h-950c-200,0,-300,-400,-600,-400v-50c-200,0,-300,150,-400,150h-175"/> -->
-                <!-- <path class="trip 2015_05_06" d="M1725,800h-725v750"/> -->
-                <!-- <path class="trip 2015_05_03" d="M1000,100v700h725"/> -->
+             <!-- <path style="stroke: red; stroke-width: 20px; fill: none"  d="M1725,800v-250h-300v-450h150 c150, 0, 150, 100, 325, 100h1300"/> -->
             </g>
             <g class="streets">
-                <path class="street yonge" d="M4275,200v1000"/>
-                <path class="street universityNorthRight" d="M4100,300c0,0,50,0,50,50s0,50,0,100s-50,50-50,50"/>
-                <path class="street universityNorthLeft" d="M4100,300c0,0-50,0-50,50s0,50,0,100s50,50,50,50"/>
-                <path class="street unversity" d="M4100,500v700"/>
-                <path class="street stephen" d="M1725,800V450"/>
-                <path class="street spadina" d="M3850,200v1000"/>
-                <path class="street roncesvalles" d="M2650,200v600"/>
-                <path class="street queen" d="M2650,800h3000"/>
-                <path class="street queenswayCurve" d="M1900,800c100,0,200-150,400-150s275,150,350,150"/>
-                <path class="street queensway" d="M100,800h1800"/>
-                <path class="street princeEdward" d="M1425,550V100"/>
-                <path class="street parklawn" d="M1575,800V350"/>
-                <path class="street ossington" d="M3325,800V200"/>
-                <path class="street landsdowne" d="M2900,200v600"/>
-                <path class="street lakeshoreEast" d="M5650,975c0,0,0,0-175,0s-375,225-575,225c-50,0-2000,0-2000,0"/>
-                <path class="street lakeshoreCurve" d="M1275,1550c300,0,625-800,1025-800c275,0,350,450,600,450"/>
-                <path class="street lakeshoreWest" d="M1275,1550H100"/>
-                <path class="street jarvis" d="M4400,200v900"/>
-                <path class="street islington" d="M1000,100v1450"/>
-                <path class="street kipling" d="M700,100v1450"/>
-                <path class="street royalYork" d="M1275,100v1450"/>
-                <path class="street gardinerEast" d="M2900,1100h1750"/>
-                <path class="street gardinerCurve" d="M1725,900c250,0,375-200,575-200c300,0,400,400,600,400"/>
-                <path class="street gardinerWest" d="M100,900h1625"/>
-                <path class="street frontEast" d="M4400,975h250"/>
-                <path class="street frontCurve" d="M4275,1025c75,0,75,-50,125-50"/>
-                <path class="street frontWest" d="M3675,1025h600"/>
-                <path class="street evans" d="M1275,975H100"/>
-                <path class="street dvp" d="M4900,100v700c0,175-50,300-250,300"/>
-                <path class="street dundas" d="M3325,650h2325"/>
-                <path class="street dunadsCurve" d="M2650,200c0,450,675,450,675,450"/>
-                <path class="street dufferin" d="M3100,200v600"/>
-                <path class="street brownsline" d="M100,1550c0,0,0-450,0-575"/>
-                <path class="street bloorEast" d="M1900,200h2500"/>
-                <path class="street bloorCurve" d="M1900,200c-175,0-175-100-325-100"/>
-                <path class="street bloorWest" d="M100,100h1475"/>
-                <path class="street berry" d="M1350,550h425"/>
-                <path class="street bathurst" d="M3675,200v1000"/>
                 <path class="street avenue" d="M4100,200v100"/>
+                <path class="street bathurst" d="M3675,200v1000"/>
+                <path class="street berry" d="M1350,550h425"/>
+                <path class="street bloorWest" d="M100,100h1475"/>
+                <path class="street bloorCurve" d="M1900,200c-175,0-175-100-325-100"/>
+                <path class="street bloorEast" d="M1900,200h2500"/>
+                <path class="street brownsline" d="M100,1550c0,0,0-450,0-575"/>
+                <path class="street dufferin" d="M3100,200v600"/>
+                <path class="street dunadsCurve" d="M2650,200c0,450,675,450,675,450"/>
+                <path class="street dundas" d="M3325,650h2325"/>
+                <path class="street dvp" d="M4900,100v700c0,175-50,300-250,300"/>
+                <path class="street evans" d="M1275,975H100"/>
+                <path class="street frontWest" d="M3675,1025h600"/>
+                <path class="street frontCurve" d="M4275,1025c75,0,75,-50,125-50"/>
+                <path class="street frontEast" d="M4400,975h250"/>
+                <path class="street gardinerWest" d="M100,900h1625"/>
+                <path class="street gardinerCurve" d="M1725,900c250,0,375-200,575-200c300,0,400,400,600,400"/>
+                <path class="street gardinerQueensway" d="M2300,650v50"/>
+                <path class="street gardinerEast" d="M2900,1100h1750"/>
+                <path class="street horner" d="M700,1250h125v-350"/>
+                <path class="street kipling" d="M700,100v1450"/>
+                <path class="street islington" d="M1000,100v1450"/>
+                <path class="street jarvis" d="M4400,200v900"/>
+                <path class="street lakeshoreWest" d="M1275,1550H100"/>
+                <path class="street lakeshoreCurve" d="M1275,1550c300,0,625-800,1025-800c275,0,350,450,600,450"/>
+                <path class="street lakeshoreEast" d="M5650,975c0,0,0,0-175,0s-375,225-575,225c-50,0-2000,0-2000,0"/>
+                <path class="street landsdowne" d="M2900,200v600"/>
+                <path class="street ossington" d="M3325,800V200"/>
+                <path class="street parklawn" d="M1575,900V350"/>
+                <path class="street princeEdward" d="M1425,550V100"/>
+                <path class="street queensway" d="M100,800h1800"/>
+                <path class="street queenswayCurve" d="M1900,800c100,0,200-150,400-150s275,150,350,150"/>
+                <path class="street queen" d="M2650,800h3000"/>
+                <path class="street roncesvalles" d="M2650,200v600"/>
+                <path class="street royalYork" d="M1275,100v1450"/>
+                <path class="street spadina" d="M3850,200v1000"/>
+                <path class="street stephen" d="M1725,800V450"/>
+                <path class="street unversity" d="M4100,500v700"/>
+                <path class="street universityNorthLeft" d="M4100,300c0,0-50,0-50,50s0,50,0,100s50,50,50,50"/>
+                <path class="street universityNorthRight" d="M4100,300c0,0,50,0,50,50s0,50,0,100s-50,50-50,50"/>
+                <path class="street yonge" d="M4275,200v1000"/>
             </g>
         </svg>
     </main>
 
-    <aside data-ng-data>
-        <p>total cost: ${{total_cost}} CAD</p>
-        <p>total distance: {{total_distance}}km</p>
-        <p>total time: {{total_time}} hours</p>
-        <p>average cost of 1 km: ${{average_cost_km}} CAD</p>
-        <p>average cost of 1 minute: ${{average_cost_minute}} CAD</p>
-    </aside>
-
-    <script src="scripts.js"></script>
+    <script src="src/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="src/node_modules/snapsvg/dist/snap.svg-min.js"></script>
+    <script src="src/node_modules/angular/angular.min.js"></script>
+    <script src="src/js/app.js"></script>
+    <script src="src/js/ngMapFactory.js"></script>    
+    <script src="src/js/ngMap.js"></script>    
+    <script src="src/js/ngAnimator.js"></script>    
+    
 </body>
-
 </html>
