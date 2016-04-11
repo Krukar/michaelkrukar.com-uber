@@ -11,24 +11,32 @@
 </head>
 
 <body data-ng-app="uberApp">
-
     <main data-ng-map>
         <svg id="ngMap" x="0px" y="0px" viewBox="0 0 6000 2000">
             <g class="trips">
-             <!-- <path style="stroke: red; stroke-width: 20px; fill: none"  d="M1725,800v-250h-300v-450h150 c150, 0, 150, 100, 325, 100h1300"/> -->
+                <path class="trip" data-ng-repeat="trip in trips" data-ng-attr-d="{{trip.path}}"/>
             </g>
             <g class="streets">
+                <path class="street augusta" d="M3775,650v-150"/>
                 <path class="street avenue" d="M4100,200v100"/>
                 <path class="street bathurst" d="M3675,200v1000"/>
+                <path class="street bellwoods" d="M3500,650v150"/>
                 <path class="street berry" d="M1350,550h425"/>
+                <path class="street birmingham" d="M700,1475h300"/>
                 <path class="street bloorWest" d="M100,100h1475"/>
                 <path class="street bloorCurve" d="M1900,200c-175,0-175-100-325-100"/>
                 <path class="street bloorEast" d="M1900,200h2500"/>
+                <path class="street broadview" d="M5000,600v200"/>
                 <path class="street brownsline" d="M100,1550c0,0,0-450,0-575"/>
+                <path class="street collegeWest" d="M2900,450h500"/>
+                <path class="street collegeCurve" d="M3400,450c50,0,55,50,100,50"/>
+                <path class="street collegeEast" d="M3500,500h775"/>
                 <path class="street dufferin" d="M3100,200v600"/>
-                <path class="street dunadsCurve" d="M2650,200c0,450,675,450,675,450"/>
+                <path class="street dunadsCurve" d="M2650,200c0,150,250,250,250,250"/>
+                <path class="street dundasCurve2" d="M2900,450l200,100l225,100"/>
                 <path class="street dundas" d="M3325,650h2325"/>
                 <path class="street dvp" d="M4900,100v700c0,175-50,300-250,300"/>
+                <path class="street elsinore" d="M875,1500v-25"/>
                 <path class="street evans" d="M1275,975H100"/>
                 <path class="street frontWest" d="M3675,1025h600"/>
                 <path class="street frontCurve" d="M4275,1025c75,0,75,-50,125-50"/>
@@ -37,6 +45,9 @@
                 <path class="street gardinerCurve" d="M1725,900c250,0,375-200,575-200c300,0,400,400,600,400"/>
                 <path class="street gardinerQueensway" d="M2300,650v50"/>
                 <path class="street gardinerEast" d="M2900,1100h1750"/>
+                <path class="street gardinerLakeshore" d="M4675,1100c200,0 400,-125, 800,-125"/>
+                <path class="street gerrard" d="M4100,600h1550"/>
+                <path class="street greenwood" d="M5600,800v-600"/>
                 <path class="street horner" d="M700,1250h125v-350"/>
                 <path class="street kipling" d="M700,100v1450"/>
                 <path class="street islington" d="M1000,100v1450"/>
@@ -45,6 +56,8 @@
                 <path class="street lakeshoreCurve" d="M1275,1550c300,0,625-800,1025-800c275,0,350,450,600,450"/>
                 <path class="street lakeshoreEast" d="M5650,975c0,0,0,0-175,0s-375,225-575,225c-50,0-2000,0-2000,0"/>
                 <path class="street landsdowne" d="M2900,200v600"/>
+                <path class="street leslie" d="M5475,975v-175"/>
+                <path class="street mountjoy" d="M5600,275h150"/>
                 <path class="street ossington" d="M3325,800V200"/>
                 <path class="street parklawn" d="M1575,900V350"/>
                 <path class="street princeEdward" d="M1425,550V100"/>
@@ -63,15 +76,18 @@
         </svg>
     </main>
 
-    <!-- <script src="src/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Development Files
+    <script src="src/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="src/node_modules/snapsvg/dist/snap.svg-min.js"></script>
     <script src="src/node_modules/angular/angular.min.js"></script>
     <script src="src/js/app.js"></script>
     <script src="src/js/ngMapFactory.js"></script>    
     <script src="src/js/ngMap.js"></script>    
-    <script src="src/js/ngAnimator.js"></script>    
+    <script src="src/js/ngAnimator.js"></script>
     -->
-    <script src="src/js/scripts.js"></script>    
-    
+
+    <!-- Live Files
+    -->
+    <script src="scripts.js"></script>    
 </body>
 </html>

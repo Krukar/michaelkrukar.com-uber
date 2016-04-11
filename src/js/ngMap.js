@@ -16,17 +16,20 @@
 		};
 
 		function linkFunc(scope, element, attrs){
-			// This acts as my init
-			ngMapFactory.getData().then(function(data){
-				// ngAnimator.initTrip(6);
-				angular.forEach(data, function(value, key) {
-					ngAnimator.initTrip(value.id);
+			ngMapFactory.init().then(function(data){
+				scope.trips = data;
+				angular.forEach(scope.trips, function(trip, key) {
+					if(trip.path){
+						ngAnimator.animateTrip(trip);
+					}
 				});
 			});
-
 		}
 
 		function ctrlFunc($scope, $element){
+			$element.on('click', function(){
+				$('.trips').toggle();
+			})
 		}
 
 		return directive;

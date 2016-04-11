@@ -3,13 +3,25 @@
 	stroke: $lime;
 }  
 
+.trips{
+	display: none;
+}
+
 .trip{
 	fill: none;
-	stroke: rgba($blue, 0.1);
+	stroke: rgba($red, 0.1);
 	stroke-width: 20px;
 }
 
 .car{
-	fill: $red;
+	// To test overlapping trips
+	// fill: rgba($blue, 0.5);
+	fill: $blue;
 	stroke: none;
+}
+
+.debug{
+	fill: none;
+	stroke: red;
+	stroke-width: 20px;
 }
