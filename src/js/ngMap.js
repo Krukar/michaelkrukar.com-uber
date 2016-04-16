@@ -18,18 +18,18 @@
 		function linkFunc(scope, element, attrs){
 			ngMapFactory.init().then(function(data){
 				scope.trips = data;
+
 				angular.forEach(scope.trips, function(trip, key) {
 					if(trip.path){
 						ngAnimator.animateTrip(trip);
 					}
 				});
+
 			});
 		}
 
 		function ctrlFunc($scope, $element){
-			$element.on('click', function(){
-				$('.trips').toggle();
-			})
+			$scope.options = ngMapFactory.getOptions();
 		}
 
 		return directive;

@@ -13,7 +13,7 @@
 <body data-ng-app="uberApp">
     <main data-ng-map>
         <svg id="ngMap" x="0px" y="0px" viewBox="0 0 6000 2000">
-            <g class="trips">
+            <g class="trips" data-ng-if="options.heatmap">
                 <path class="trip" data-ng-repeat="trip in trips" data-ng-attr-d="{{trip.path}}"/>
             </g>
             <g class="streets">
@@ -76,7 +76,7 @@
         </svg>
     </main>
 
-    <!-- Development Files
+    <!-- Development Files -->
     <script src="src/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="src/node_modules/snapsvg/dist/snap.svg-min.js"></script>
     <script src="src/node_modules/angular/angular.min.js"></script>
@@ -84,10 +84,10 @@
     <script src="src/js/ngMapFactory.js"></script>    
     <script src="src/js/ngMap.js"></script>    
     <script src="src/js/ngAnimator.js"></script>
-    -->
 
     <!-- Live Files
-    -->
     <script src="scripts.js"></script>    
+-->
+
 </body>
 </html>

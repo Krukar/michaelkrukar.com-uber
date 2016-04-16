@@ -6,5 +6,5 @@
 	angular.module('uberApp', []);
 
 	console.log('app.js init');
-
-})();
+  
+})();   

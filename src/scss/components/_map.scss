@@ -4,7 +4,6 @@
 }  
 
 .trips{
-	display: none;
 }
 
 .trip{
@@ -17,6 +16,11 @@
 	// To test overlapping trips
 	// fill: rgba($blue, 0.5);
 	fill: $blue;
+	stroke: none;
+}
+
+.active{
+	fill: $red;
 	stroke: none;
 }
 

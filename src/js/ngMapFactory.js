@@ -12,7 +12,7 @@
 		var data;
 
 		var service = {
-			init: init,
+			init: init, 
 			getOptions: getOptions
 		};
 		return service;
@@ -30,12 +30,15 @@
 							id: value.date,
 							class: 'car'
 						});
+
 						data[key].pathLength = Snap.path.getTotalLength(data[key].path); // calc path length
 						data[key].outPercentage = Math.round(data[key].pathLength * 0.95); // calc percentage on when to animate out
-						// 10 minute trip takes 10 seconds to animate augmented by whatever our multiplier is
-						data[key].speed = (getMinutes(data[key].time) * 1000) * options.speed;
-					});
 
+						// time length is the minutes converted to seconds with a multiplier to make it faster/slow
+						// notes: if the trip took 12 minutes, it will animate in 12 seconds * whatever the offset is so that the animations are smoother
+						data[key].timeLength = (getMinutes(data[key].time) * 1000) * options.speed;
+
+					});
 					return data;
 				});
 				return promise;
@@ -49,7 +52,9 @@
 			var options = {
 				map: Snap('#ngMap'),
 				size: 20,
-				speed: 0.8
+				hover: 50,
+				speed: 0.8,
+				heatmap: true
 			};
 			return options;
 		}
