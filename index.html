@@ -13,7 +13,7 @@
 <body data-ng-app="uberApp">
     <main data-ng-map>
         <svg id="ngMap" x="0px" y="0px" viewBox="0 0 6000 2000">
-            <g id="streets">
+            <g id="streets" data-ng-if="options.ui.streets">
                 <path class="street augusta" d="M3775,650v-150"/>
                 <path class="street avenue" d="M4100,200v100"/>
                 <path class="street bathurst" d="M3675,200v1000"/>
@@ -70,7 +70,7 @@
                 <path class="street universityNorthRight" d="M4100,300c0,0,50,0,50,50s0,50,0,100s-50,50-50,50"/>
                 <path class="street yonge" d="M4275,200v1000"/>
             </g>
-            <g id="trips" data-ng-if="options.heatmap">
+            <g id="trips" data-ng-if="options.ui.heatmap">
                 <path class="trip" data-ng-repeat="trip in trips" data-ng-attr-d="{{trip.path}}"/>
             </g>
             <g id="highlight"></g>

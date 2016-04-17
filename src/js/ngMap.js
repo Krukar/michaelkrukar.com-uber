@@ -16,10 +16,10 @@
 		};
 
 		function linkFunc(scope, element, attrs){
-			ngMapFactory.init().then(function(data){
+			ngMapFactory.getTrips().then(function(data){
 				scope.trips = data;
 
-				angular.forEach(scope.trips, function(trip, key) {
+				angular.forEach(scope.trips, function(trip) {
 					if(trip.path){
 						ngAnimator.animateTrip(trip);
 					}

@@ -12,6 +12,7 @@
 		var options = ngMapFactory.getOptions();
 
 		var highlight;
+		var highlightId;
 
 		var service = {
 			animateTrip: animateTrip
@@ -56,14 +57,26 @@
 
 		function animateOut(trip){
 			trip.car.animate({r: 0}, 350, mina.easeInOutSine);
-
-			if(trip.car == highlight){
-				console.log('match')
+			if(highlightId == trip.path){
+				highlight.animate({
+					strokeWidth: '0'
+				}, 350, mina.easeInOutSine, function(){
+					highlight.remove();
+				});
 			}
-
 		}
 
 		function setActive(trip){
+			if(highlight){
+				var prevHighlight = highlight;
+				// animate highlight out
+				highlight.animate({
+					strokeWidth: '0'
+				}, 350, mina.easeInOutSine, function(){
+					prevHighlight.remove();
+				});
+			}
+
 			// if there was a previous one hovered, unhover it
 			if(options.active){
 				animateIn(options.active);
@@ -75,28 +88,17 @@
 				r: options.hover
 			}, 350, mina.easeInOutSine);
 
-			if(highlight){
-				animateHighlightOut();
-			}
-
-			animateHighlightIn(trip.path);
-		}
-
-		function animateHighlightIn(path){
-			highlight = Snap('#highlight').path(path).attr({
+			// create the highlight
+			highlight = Snap('#highlight').path(trip.path).attr({
 				class: 'highlight'
 			});
 
+			// animate highlight in
 			highlight.animate({
-				strokeWidth: '16px'
+				strokeWidth: '8px'
 			}, 350, mina.easeInOutSine);
-		}
 
-		function animateHighlightOut(){
-			highlight.animate({
-				strokeWidth: '0'
-			}, 350, mina.easeInOutSine);
-			highlight.remove();
+			highlightId = highlight.node.getAttribute('d');
 		}
 
 	}
