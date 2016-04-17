@@ -11,22 +11,32 @@
 	function ngMapFactory($http){
 		var data;
 
+		var options = {
+			map: Snap('#ngMap'),
+			cars: Snap('#cars'),
+			size: 20,
+			hover: 50,
+			speed: 0.8,
+			heatmap: true
+		};
+
 		var service = {
 			init: init, 
-			getOptions: getOptions
+			getOptions: getOptions,
+			setActive: setActive
 		};
 		return service;
 		
 		function init(){
 			// Note: Not sure if this is the correct way. I've created an init function that grabs my json, creates a data object and handles all the math
+			// It does seem weird that i only call it once but there's a !data at the top for an if else
 			if(!data){
 				var promise = $http.get('/data/data.json').then(function(response) {
 					data = response.data;
-					var options = getOptions();
 
 					angular.forEach(data, function(value, key) {
 						// Add a car
-						data[key].car = options.map.circle(options.size, options.size, 0).attr({
+						data[key].car = options.cars.circle(options.size, options.size, 0).attr({
 							id: value.date,
 							class: 'car'
 						});
@@ -49,14 +59,11 @@
 		}
 
 		function getOptions(){
-			var options = {
-				map: Snap('#ngMap'),
-				size: 20,
-				hover: 50,
-				speed: 0.8,
-				heatmap: true
-			};
 			return options;
+		}
+
+		function setActive(trip){
+			options.active = trip;
 		}
 
 		function getMinutes(time){
