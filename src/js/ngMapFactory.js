@@ -12,8 +12,8 @@
 		var options = {
 			map: Snap('#ngMap'),
 			cars: Snap('#cars'),
-			size: 20,
-			hover: 50,
+			size: 16,
+			hover: 32,
 			speed: 0.8,
 			ui: {
 				heatmap: false,

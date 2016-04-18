@@ -13,6 +13,7 @@
 <body data-ng-app="uberApp">
     <main data-ng-map>
         <svg id="ngMap" x="0px" y="0px" viewBox="0 0 6000 2000">
+            <!-- <image style="overflow:visible;" width="7114" height="2882" id="gta_2_" xlink:href="map.png"  transform="matrix(1 0 0 1 -267.8333 -842.1667)"></image> -->
             <g id="streets" data-ng-if="options.ui.streets">
                 <path class="street augusta" d="M3775,650v-150"/>
                 <path class="street avenue" d="M4100,200v100"/>
@@ -75,6 +76,8 @@
             </g>
             <g id="highlight"></g>
             <g id="cars"></g>
+
+            <!-- <path class="debug" d="M2000,200v200c100,200 200,200 300,250"> -->
         </svg>
     </main>
 
@@ -86,10 +89,10 @@
     <script src="src/js/ngMapFactory.js"></script>    
     <script src="src/js/ngMap.js"></script>    
     <script src="src/js/ngAnimator.js"></script>
-     -->
+    -->
 
     <!-- Live Files -->
-    <script src="scripts.js"></script>    
+    <script src="scripts.js"></script>   
 
 </body>
 </html>

@@ -46,11 +46,13 @@
 				r: options.size
 			}, 350, mina.easeInOutSine);
 
-			// create event listener
-			// goes here instead of animateTrip() in case you unhover then want to rehover
-			trip.car.mouseover(function(){
-				// remove the mouseover event
-				trip.car.unmouseover();
+			// creat event listener
+			// we use angular since it has mouseenter
+			// we use trip.car.node because this element does not exist inside angular
+			var element = $(trip.car.node);
+
+			element.on('mouseenter', function(){
+				element.unbind('mouseenter');
 				setActive(trip);
 			});
 		}
@@ -95,7 +97,7 @@
 
 			// animate highlight in
 			highlight.animate({
-				strokeWidth: '8px'
+				strokeWidth: '4px'
 			}, 350, mina.easeInOutSine);
 
 			highlightId = highlight.node.getAttribute('d');
