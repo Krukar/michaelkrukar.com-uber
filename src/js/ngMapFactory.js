@@ -11,9 +11,8 @@
 	function ngMapFactory($http){
 		var options = {
 			map: Snap('#ngMap'),
-			cars: Snap('#cars'),
 			size: 16,
-			hover: 32,
+			hover: 40,
 			speed: 0.8,
 			ui: {
 				heatmap: false,
@@ -23,8 +22,7 @@
 
 		var service = {
 			getTrips: getTrips, 
-			getOptions: getOptions,
-			setActive: setActive
+			getOptions: getOptions
 		};
 		return service;
 		
@@ -35,7 +33,7 @@
 				angular.forEach(response.data, function(value, key) {
 					trips[value.date] = value;
 
-					trips[value.date].car = options.cars.circle(options.size, options.size, 0).attr({
+					trips[value.date].car = Snap('#cars').circle(options.size, options.size, 0).attr({
 						id: value.date,
 						class: 'car'
 					});
@@ -56,10 +54,6 @@
 
 		function getOptions(){
 			return options;
-		}
-
-		function setActive(trip){
-			options.active = trip;
 		}
 
 		function getMinutes(time){

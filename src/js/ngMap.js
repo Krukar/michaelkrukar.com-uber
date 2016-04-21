@@ -21,7 +21,7 @@
 
 				angular.forEach(scope.trips, function(trip) {
 					if(trip.path){
-						ngAnimator.animateTrip(trip);
+						ngAnimator.initTrip(trip);
 					}
 				});
 

@@ -7,29 +7,38 @@
 	.module('uberApp')
 	.factory('ngAnimator', ngAnimator);
 
-	ngAnimator.$inject = ['ngMapFactory']
-	function ngAnimator(ngMapFactory){
+	ngAnimator.$inject = ['ngMapFactory', '$timeout']
+	function ngAnimator(ngMapFactory, $timeout){
 		var options = ngMapFactory.getOptions();
 
-		var highlight;
-		var highlightId;
+		var hovered, highlight;
 
 		var service = {
-			animateTrip: animateTrip
+			initTrip: initTrip
 		};
 		return service;
 
-		function animateTrip(trip){
-			var out = false; // set out animation to false
+		function initTrip(trip){
+			var element = $(trip.car.node);
 
-			animateIn(trip); // animate car in
+			animate(trip);
 
+			element.on('mouseenter', function(){
+				hover(trip);
+			});
+		}
+
+		// Animations
+		function animate(trip){
+			var out = false;
+
+			animateIn(trip.car);			
 			// start animation
 			Snap.animate(0, trip.pathLength, function(step) {
 				// if the trip is past 95% complete trigger 1 animate out
-				if(step >= trip.outPercentage && out == false){
-					animateOut(trip);
-					out = true; // set to true so that the animateOut function does not loop
+				if(step > trip.outPercentage && out === false){
+					out = true;
+					animateOut(trip.car);
 				}
 				var moveToPoint = Snap.path.getPointAtLength( trip.path, step );
 				var x = moveToPoint.x - options.size; // circle starts top left corner, this offsets so that they are centered
@@ -37,70 +46,35 @@
 				trip.car.transform('translate(' + x + ',' + y + ')');
 			}, trip.timeLength, mina.easeInOutSine, function(){
 				// When everything is done, loop the trip animation
-				animateTrip(trip);
+				animate(trip);
 			});		
 		}
 
-		function animateIn(trip){
-			trip.car.animate({
-				r: options.size
-			}, 350, mina.easeInOutSine);
-
-			// creat event listener
-			// we use angular since it has mouseenter
-			// we use trip.car.node because this element does not exist inside angular
-			var element = $(trip.car.node);
-
-			element.on('mouseenter', function(){
-				element.unbind('mouseenter');
-				setActive(trip);
-			});
+		function animateIn(car){
+			car.animate({r: options.size}, 350, mina.easeInOutSine);
 		}
 
-		function animateOut(trip){
-			trip.car.animate({r: 0}, 350, mina.easeInOutSine);
-			if(highlightId == trip.path){
-				highlight.animate({
-					strokeWidth: '0'
-				}, 350, mina.easeInOutSine, function(){
-					highlight.remove();
-				});
-			}
+		function animateOut(car){
+			car.animate({r: 0}, 350, mina.easeInOutSine);
 		}
 
-		function setActive(trip){
-			if(highlight){
-				var prevHighlight = highlight;
-				// animate highlight out
-				highlight.animate({
-					strokeWidth: '0'
-				}, 350, mina.easeInOutSine, function(){
-					prevHighlight.remove();
-				});
+		// Events
+		function hover(trip){
+			if(hovered){
+				unhover();
 			}
+			hovered = trip.car;
+			trip.car.animate({r: options.hover}, 350, mina.easeInOutSine);
 
-			// if there was a previous one hovered, unhover it
-			if(options.active){
-				animateIn(options.active);
-			}
-			ngMapFactory.setActive(trip);
+			$timeout(function() {
+				if(hovered === trip.car){
+					unhover();
+				}
+			}, 3000);
+		}
 
-			// animate the one that is hovered
-			trip.car.animate({
-				r: options.hover
-			}, 350, mina.easeInOutSine);
-
-			// create the highlight
-			highlight = Snap('#highlight').path(trip.path).attr({
-				class: 'highlight'
-			});
-
-			// animate highlight in
-			highlight.animate({
-				strokeWidth: '4px'
-			}, 350, mina.easeInOutSine);
-
-			highlightId = highlight.node.getAttribute('d');
+		function unhover(){
+			hovered.animate({r: options.size}, 350, mina.easeInOutSine);
 		}
 
 	}
